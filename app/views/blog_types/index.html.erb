@@ -1,0 +1,27 @@
+<h1>Listing blog_types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blog_types.each do |blog_type| %>
+      <tr>
+        <td><%= blog_type.name %></td>
+        <td><%= link_to 'Show', blog_type %></td>
+        <td><%= link_to 'Edit', edit_blog_type_path(blog_type) %></td>
+        <td><%= link_to 'Destroy', blog_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Blog type', new_blog_type_path %>

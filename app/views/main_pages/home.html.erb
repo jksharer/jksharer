@@ -1,3 +1,8 @@
 <% provide(:title, 'Home') %>
-<h1>MainPages#home</h1>
-<p>Find me in app/views/main_pages/home.html.erb</p>
+<h1>Recent Blogs</h1>
+  <% @blogs.each do |blog| %>
+    <p><%= blog.title %></p>
+    <p><%= blog.content %></p>
+    <br>
+  <% end %>
+
