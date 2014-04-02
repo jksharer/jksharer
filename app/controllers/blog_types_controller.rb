@@ -1,6 +1,7 @@
 class BlogTypesController < ApplicationController
   before_action :set_blog_type, only: [:show, :edit, :update, :destroy]
-
+  before_action :check_if_logined
+  
   # GET /blog_types
   # GET /blog_types.json
   def index

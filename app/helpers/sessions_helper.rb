@@ -1,4 +1,4 @@
-module SessionsHelper
+module SessionsHelper 
   def sign_in(user)
     remember_token = User.new_remember_token
     cookies.permanent[:remember_token] = remember_token
@@ -27,6 +27,10 @@ module SessionsHelper
     current_user.update_attribute(:remember_token, User.encrypt(User.new_remember_token))
     self.current_user = nil
     cookies.delete(:remember_token)
+  end
+  
+  def check_if_logined
+      redirect_to root_path unless sign_in?  
   end
 
 end

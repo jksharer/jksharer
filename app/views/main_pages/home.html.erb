@@ -2,7 +2,7 @@
 <h1>Recent Blogs</h1>
   <% @blogs.each do |blog| %>
     <p><%= blog.title %></p>
-    <p><%= blog.content %></p>
-    <br>
+    <%= raw blog.content %>
+    <br><br>
   <% end %>
 
