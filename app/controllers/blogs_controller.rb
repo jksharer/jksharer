@@ -28,7 +28,6 @@ class BlogsController < ApplicationController
     ps = blog_params
     @blog = Blog.new
     @blog.resource_type = ResourceType.find_by(name: ps[:resource_type])
-    puts @blog.resource_type
     @blog.blog_type = BlogType.find_by(name: ps[:blog_type])
     @blog.title = ps[:title]
     @blog.content = ps[:content]
