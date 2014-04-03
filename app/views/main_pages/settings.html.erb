@@ -1,7 +1,8 @@
 <%= provide(:title, "Settings") %>
 <h1>Settings</h1>
 <ul>
-  <li><%= link_to "User Info", edit_user_path(current_user) %></li>
+  <li><%= link_to "Users Management", users_path %></li>
+  <li><%= link_to "Modify password", edit_user_path(current_user) %></li>
   <li><%= link_to "Resource Type", resource_types_path %></li>
   <li><%= link_to "Blog Type", blog_types_path %></li>
 </ul>

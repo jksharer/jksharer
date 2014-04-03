@@ -1,8 +1,17 @@
 <% provide(:title, 'Home') %>
-<h1>Recent Blogs</h1>
+<%= will_paginate @blogs %>  
   <% @blogs.each do |blog| %>
-    <p><%= blog.title %></p>
-    <%= raw blog.content %>
-    <br><br>
+    <div>
+      <h3 class="title"><%= blog.title %></h3>
+      <span class="timestamp">
+        <%= time_ago_in_words(blog.created_at) %> ago
+      </span>
+      <span class="label label-primary"><%= blog.resource_type.name %></span>
+      <span class="label label-success"><%= blog.blog_type.name %></span>
+      <div class="content">
+        <%= sanitize(raw blog.content) %>  
+      </div>
+    </div>
+    <br>
   <% end %>
-
+<%= will_paginate @blogs %>

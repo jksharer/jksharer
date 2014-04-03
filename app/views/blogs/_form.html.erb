@@ -1,14 +1,18 @@
-<script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 <script type="text/javascript">
   tinymce.init({
     selector: "textarea",
     theme: "modern",
-    plugins: [
-      'advlist autolink link image lists charmap print preview fullscreen media',
-      'table autosave textcolor wordcount code searchreplace insertdatetime preview'        
+    plugins: [   
+      "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "insertdatetime media nonbreaking save table contextmenu directionality",
+        "emoticons template paste textcolor"
     ],
-    toolbar: "searchreplace insertdatetime preview",
-    insertdatetime_formats: ["%Y.%m.%d", "%H:%M"]
+    toolbar1: "undo redo | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+    toolbar2: " searchreplace | bullist numlist | outdent indent blockquote | link unlink anchor image media code | inserttime preview | forecolor backcolor",
+    toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
+    image_advtab: true,
+    insertdatetime_formats: ["%Y.%m.%d", "%H:%M"],
   });
 </script>
 
@@ -25,28 +29,18 @@
     </div>
   <% end %>
 
-  <div class="field">
     <%= f.label :resource_type %><br>
     <%= f.select :resource_type, ResourceType.all.map { |t| t.name }, 
-                                 prompt: "Select a type" %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <!-- <%= f.text_area :content %> -->
-    <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 80, 
-      :id => "blog-content" %>
-    
-  </div>
-  <div class="field">
+      prompt: "Select a type", class: "form-control input-sm" %>
     <%= f.label :blog_type %><br>
     <%= f.select :blog_type, BlogType.all.map { |t| t.name }, 
-                                 prompt: "Select a type" %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      prompt: "Select a type", class: "form-control input-sm" %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+    
+    <%= f.label :content %><br>
+    <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 80, 
+      :id => "blog-content" %>
+  
+    <%= f.submit class: "btn btn-large btn-primary"%>
 <% end %>

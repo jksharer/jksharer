@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_create :create_remember_token 
+  after_destroy :ensure_an_admin_remains
   
   has_secure_password
   
@@ -22,5 +23,11 @@ class User < ActiveRecord::Base
   private
     def create_remember_token
       self.remember_token = User.encrypt(User.new_remember_token)
+    end
+    
+    def ensure_an_admin_remains
+      if User.count.zero?
+        raise "Can't delete the last user"
+      end
     end
 end
