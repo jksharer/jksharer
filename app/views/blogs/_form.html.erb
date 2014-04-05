@@ -12,7 +12,7 @@
     toolbar2: " searchreplace | bullist numlist | outdent indent blockquote | link unlink anchor image media code | inserttime preview | forecolor backcolor",
     toolbar3: "table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft",
     image_advtab: true,
-    insertdatetime_formats: ["%Y.%m.%d", "%H:%M"],
+    insertdatetime_formats: ["%Y.%m.%d", "%H:%M"]
   });
 </script>
 
@@ -29,16 +29,28 @@
     </div>
   <% end %>
 
-    <%= f.label :resource_type %><br>
-    <%= f.select :resource_type, ResourceType.all.map { |t| t.name }, 
-      prompt: "Select a type", class: "form-control input-sm" %>
-    <%= f.label :blog_type %><br>
-    <%= f.select :blog_type, BlogType.all.map { |t| t.name }, 
-      prompt: "Select a type", class: "form-control input-sm" %>
-    <%= f.label :title %><br>
+    <%= f.label :resource_type %>
+    <% ResourceType.all.each do |t| %>
+      <%= f.radio_button :resource_type, "#{t.name}", class: "form-control input-sm", 
+        checked: resource_checked?(@blog, t.name) %>
+      <span><%= t.name %></span>
+    <% end %>
+    <br/><br/>
+    <!-- <%= f.select :resource_type, ResourceType.all.map { |t| t.name }, 
+      prompt: "Select a type", class: "form-control input-sm" %> -->
+    <%= f.label :blog_type %>
+    <% BlogType.all.each do |t| %>
+      <%= f.radio_button :blog_type, "#{t.name}", class: "form-control input-sm", 
+        checked: blog_checked?(@blog, t.name) %>
+      <span><%= t.name %></span>
+    <% end %>
+    <br/><br/>
+    <!-- <%= f.select :blog_type, BlogType.all.map { |t| t.name }, 
+      prompt: "Select a type", class: "form-control input-sm" %> -->
+    <%= f.label :title %>
     <%= f.text_field :title %>
     
-    <%= f.label :content %><br>
+    <%= f.label :content %>
     <%= f.text_area :content, :class => "tinymce", :rows => 20, :cols => 80, 
       :id => "blog-content" %>
   

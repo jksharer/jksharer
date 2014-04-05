@@ -48,8 +48,13 @@ class BlogsController < ApplicationController
   # PATCH/PUT /blogs/1
   # PATCH/PUT /blogs/1.json
   def update
+    ps = blog_params
+    @blog.resource_type = ResourceType.find_by(name: ps[:resource_type])
+    @blog.blog_type = BlogType.find_by(name: ps[:blog_type])
+    @blog.title = ps[:title]
+    @blog.content = ps[:content]
     respond_to do |format|
-      if @blog.update(blog_params)
+      if @blog.save
         format.html { redirect_to @blog, notice: 'Blog was successfully updated.' }
         format.json { head :no_content }
       else
