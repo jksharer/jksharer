@@ -1,6 +1,7 @@
 <h1>Blogs Management</h1>
 
-<%= link_to 'New Blog', new_blog_path, class: "btn btn-success" %>
+<%= link_to 'New Blog', new_blog_path, class: "btn btn-success active" %>
+<div class="table-responsive">
 <table class="table table-striped table-hover">
   <thead>
     <tr>
@@ -25,4 +26,5 @@
   </tbody>
 </table>
 <%= will_paginate %>
+</div>
 <br>

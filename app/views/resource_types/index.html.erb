@@ -1,10 +1,10 @@
-<h1>Listing resource_types</h1>
+<h1>Resource Types</h1>
 
-<table>
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Name</th>
-      <th></th>
+      <th>Blogs</th>
       <th></th>
       <th></th>
     </tr>
@@ -13,15 +13,12 @@
   <tbody>
     <% @resource_types.each do |resource_type| %>
       <tr>
-        <td><%= resource_type.name %></td>
-        <td><%= link_to 'Show', resource_type %></td>
+        <td><%= link_to resource_type.name, resource_type %></td>
+        <td><%= Blog.where(resource_type: resource_type).count %></td>
         <td><%= link_to 'Edit', edit_resource_type_path(resource_type) %></td>
         <td><%= link_to 'Destroy', resource_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Resource type', new_resource_type_path %>
+<%= link_to 'New Type', new_resource_type_path, class: "btn btn-success active" %>

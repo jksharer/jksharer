@@ -58,10 +58,15 @@ class BlogTypesController < ApplicationController
   # DELETE /blog_types/1
   # DELETE /blog_types/1.json
   def destroy
-    @blog_type.destroy
-    respond_to do |format|
-      format.html { redirect_to blog_types_url }
-      format.json { head :no_content }
+    if Blog.where(blog_type: @blog_type).count >= 1
+      flash[:error] = "there are blogs associated with this blog type."
+      redirect_to blog_types_path
+    else 
+      @blog_type.destroy
+      respond_to do |format|
+        format.html { redirect_to blog_types_url }
+        format.json { head :no_content }
+      end   
     end
   end
 

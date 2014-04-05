@@ -58,10 +58,15 @@ class ResourceTypesController < ApplicationController
   # DELETE /resource_types/1
   # DELETE /resource_types/1.json
   def destroy
-    @resource_type.destroy
-    respond_to do |format|
-      format.html { redirect_to resource_types_url }
-      format.json { head :no_content }
+    if Blog.where(resource_type: @resource_type).count >= 1
+      flash[:error] = "there are blogs associated with this resource type."
+      redirect_to resource_types_path
+    else 
+      @resource_type.destroy
+      respond_to do |format|
+        format.html { redirect_to resource_types_url }
+        format.json { head :no_content }
+      end
     end
   end
 
