@@ -9,7 +9,7 @@
       <span class="label label-primary"><%= blog.resource_type.name %></span>
       <span class="label label-success"><%= blog.blog_type.name %></span>
       <div class="content">
-        <%= sanitize(raw blog.content) %>  
+        <%= raw blog.content %>  
       </div>
     </div>
     <br>

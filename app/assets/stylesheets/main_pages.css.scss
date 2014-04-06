@@ -1,6 +1,23 @@
 // Place all the styles related to the MainPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.static-words p{
+  font-size: 14px;
+  padding-left: 10px;
+}
 div .settings a {
   margin-top: 10px;
+}
+
+.content {
+  margin-top: 15px;
+}
+
+.contact {
+  margin-top: 20px;
+  font-size: 14px;
+  &:table {
+    margin-top: 5px;
+  }
 }

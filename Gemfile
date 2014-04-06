@@ -8,6 +8,7 @@ gem 'faker', '1.1.2'     #模拟数据
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'tinymce-rails'
+gem 'rails_kindeditor'
 # gem 'rails_kindeditor'
 
 group :development, :test do
@@ -44,5 +45,6 @@ group :doc do
 end
 
 group :production do
-  gem 'pg', '0.15.1'
+  # gem 'pg', '0.15.1'
+  gem 'sqlite3', '1.3.8'
 end
