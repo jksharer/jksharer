@@ -1,0 +1,24 @@
+<%= will_paginate @blogs %>  
+  <% @blogs.each do |blog| %>
+    <div class="article">
+      <h3 class="title"><%= link_to blog.title, blog %></h3>
+      <span class="timestamp">
+        <%= time_ago_in_words(blog.created_at) %> ago
+      </span>
+      <span class: "label label-default">
+        <%= link_to(blog.resource_type.name, {action: "category", 
+          rtype: blog.resource_type}) %>  
+      </span>      
+      <%= link_to blog.blog_type.name, "#", class: "label label-primary" %>
+      <span class="read-count">浏览：<%= blog.read_count/2 %>次</span>
+      <div class="content">
+        <%= raw blog.content %>  
+      </div>
+      <p class="ellipsis">......</p>
+      
+      <%= link_to "阅读全文-->", blog, class: "more" %>
+      
+    </div>
+    <br>
+  <% end %>
+<%= will_paginate @blogs %>

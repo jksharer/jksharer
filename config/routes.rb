@@ -14,6 +14,7 @@ Jksharer::Application.routes.draw do
   match '/about', to: 'main_pages#about', via: 'get'
   match '/contact', to: 'main_pages#contact', via: 'get'
   match '/settings', to: 'main_pages#settings', via: 'get'
+  match '/category', to: 'main_pages#category', via: 'get'
   
   match '/signup', to: 'users#new',   via: 'get'
   match '/signin', to: 'sessions#new',   via: 'get'

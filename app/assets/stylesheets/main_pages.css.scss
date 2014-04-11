@@ -10,8 +10,16 @@ div .settings a {
   margin-top: 10px;
 }
 
+.article {
+  border-bottom: solid 1px #aa8899;
+  padding-bottom: 20px;
+}
+
 .content {
   margin-top: 15px;
+  height: 300px;
+  display:block;
+  overflow: hidden;
 }
 
 .contact {
@@ -20,4 +28,15 @@ div .settings a {
   &:table {
     margin-top: 5px;
   }
+}
+
+.more {
+  color: #00ff00;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 2em;
+}
+
+.read-count {
+  margin-left: 2em;
 }

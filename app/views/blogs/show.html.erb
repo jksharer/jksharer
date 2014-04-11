@@ -1,22 +1,13 @@
-<p>
-  <strong>Resource Type:</strong>
-  <%= @blog.resource_type.name %>
-</p>
+<div>
+    <h3 class="title"><%= @blog.title %></h3>
+    <span class="timestamp">
+      <%= time_ago_in_words(@blog.created_at) %> ago
+    </span>
+    <span class="label label-primary"><%= @blog.resource_type.name %></span>
+    <span class="label label-success"><%= @blog.blog_type.name %></span>
+    <span>阅读<%= @blog.read_count/2  %>次</span>
+    <div class="content-show">
+      <%= raw @blog.content %>  
+    </div>
+</div>
 
-<p>
-  <strong>Blog Type:</strong>
-  <%= @blog.blog_type.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= raw @blog.content %>
-</p>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>

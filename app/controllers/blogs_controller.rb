@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :check_if_logined
+  before_action :check_if_logined, only: [:index, :new, :edit, :create, :destroy]
+  before_action :set_count, only: [:show]
 
   # GET /blogs
   # GET /blogs.json
@@ -31,6 +32,7 @@ class BlogsController < ApplicationController
     @blog.blog_type = BlogType.find_by(name: ps[:blog_type])
     @blog.title = ps[:title]
     @blog.content = ps[:content]
+    @blog.read_count = 0
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, 
@@ -83,5 +85,10 @@ class BlogsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
       params.require(:blog).permit(:resource_type, :blog_type, :title, :content )
+    end
+
+    def set_count
+      @blog.read_count += 1
+      @blog.save
     end
 end

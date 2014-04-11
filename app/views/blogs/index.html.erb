@@ -8,7 +8,7 @@
       <th>Title</th>
       <th>Resource Type</th>
       <th>Blog Type</th>
-      <th></th>
+      <th>Read Count</th>
       <th></th>
     </tr>
   </thead>
@@ -19,6 +19,7 @@
         <td><%= link_to blog.title, blog %></td>
         <td><%= blog.resource_type.name %></td>
         <td><%= blog.blog_type.name %></td>
+        <td><%= blog.read_count %></td>
         <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
         <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

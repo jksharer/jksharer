@@ -1,4 +1,6 @@
 module ApplicationHelper
+  require "sessions_helper.rb" 
+  
   def full_title(page_title)
     base_title = "Zk's Shared Blog"
     # page_title.empty? base_title:"#{page_title} | #{base_title}"
