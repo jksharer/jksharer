@@ -1,11 +1,15 @@
 <div>
-    <h3 class="title"><%= @blog.title %></h3>
+    <h3 class="title"><%= link_to @blog.title, @blog %></h3>
     <span class="timestamp">
       <%= time_ago_in_words(@blog.created_at) %> ago
     </span>
-    <span class="label label-primary"><%= @blog.resource_type.name %></span>
-    <span class="label label-success"><%= @blog.blog_type.name %></span>
-    <span>阅读<%= @blog.read_count/2  %>次</span>
+    <span class="types">
+        <%= link_to @blog.resource_type.name, controller: "main_pages", action: "category", 
+          resource_type: @blog.resource_type.id %>        
+        <%= link_to @blog.blog_type.name, controller: "main_pages", action: "category", 
+          blog_type: @blog.blog_type.id %>    
+    </span>
+    <span class="read-count">浏览：<%= @blog.read_count/2  %>次</span>
     <div class="content-show">
       <%= raw @blog.content %>  
     </div>

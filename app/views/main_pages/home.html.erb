@@ -7,23 +7,22 @@
         <%= time_ago_in_words(blog.created_at) %> ago
       </span>
 
-      <span class: "label label-default">
+      <span class="types">
         <%= link_to blog.resource_type.name, action: "category", 
-          resource_type: blog.resource_type.id %>  
-      </span>      
-      <span class: "label label-primary">
+          resource_type: blog.resource_type.id %>        
         <%= link_to blog.blog_type.name, action: "category", 
-          blog_type: blog.blog_type.id %>  
+          blog_type: blog.blog_type.id %>    
       </span>
-      
+
       <span class="read-count">浏览：<%= blog.read_count/2 %>次</span>
       <div class="content">
         <%= raw blog.content %>  
       </div>
       <p class="ellipsis">......</p>
       
-      <%= link_to "阅读全文-->", blog, class: "more" %>
-      
+      <p class="more">
+        <%= link_to "阅读全文-->", blog %>  
+      </p>
     </div>
     <br>
   <% end %>

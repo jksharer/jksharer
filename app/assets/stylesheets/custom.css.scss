@@ -136,15 +136,3 @@ input {
   @extend .control-group;
   @extend .error;
  }
-
-.title {
-  display: block;
-}
-.timestamp {
-  float: right;
-  color: $grayLight;
-}
-
-.rtype {
-  color: #00ff00;
-}
